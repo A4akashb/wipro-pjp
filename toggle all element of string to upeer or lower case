@@ -1,0 +1,36 @@
+using System;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        { 
+            Console.WriteLine("Enter a string");
+            string str = Console.ReadLine();
+            int i;
+            string new1 = "";
+            for (i = 0; i < str.Length; i++)
+            {
+                int temp = str[i];
+                if(temp>64 && temp < 91)
+                {
+                    new1 += char.ToLower(str[i]);
+                }
+                else
+                {
+                    if (temp > 96 && temp < 123)
+                    {
+                        new1 += char.ToUpper(str[i]);
+                    }
+                    else
+                    {
+                        new1 += str[i];
+                    }
+
+                }
+            }
+            Console.WriteLine(new1);
+        }
+    }
+}

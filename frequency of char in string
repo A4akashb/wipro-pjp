@@ -1,0 +1,34 @@
+using System;
+
+namespace ConsoleApp4
+{
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter The String");
+            string str = Console.ReadLine();
+            Console.WriteLine("Enter The Character");
+            char ch = Console.ReadLine()[0];
+
+            int i, freq = 0;
+            for (i = 0; i < str.Length; i++)
+            {
+               if( str[i] == ch)
+                {
+                    freq++;
+                }
+            }
+
+            Console.WriteLine(freq);
+            //int freq = 0;
+            //foreach (char c in str)
+            //{
+              //  if (c == ch)
+                //{
+                  //  freq++;
+                //}
+            //}
+        }
+    }
+}

@@ -1,0 +1,26 @@
+using System;
+
+namespace ConsoleApp4
+{
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            //48 - 57
+            char ch = Console.ReadLine()[0];
+            int temp = ch;
+            if ((temp > 64 && temp < 91) || (temp > 96 && temp < 123))
+            {
+                Console.WriteLine("It is a character");
+            }
+            else
+            {
+                if (temp > 47 && temp < 58)
+                {
+                    Console.WriteLine("It is a integer");
+                }
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,36 @@
+using System;
+
+namespace ConsoleApp4
+{
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            // check 2nd numbers place ,hundred(ones,tens) in 1st number
+            Console.WriteLine("Enter the first Number");
+            string num1 = Console.ReadLine();
+
+            Console.WriteLine("Enter The Second Number");
+            string num2 = (Console.ReadLine());
+
+            int i;
+            i = num1.IndexOf(num2);
+            switch (4 - i)
+            {
+                case 4 :
+                    Console.WriteLine("Second Digit Is At Thousands Place");
+                    break;
+                case 3:
+                    Console.WriteLine("Second Digit Is At Hundreds Place");
+                    break;
+                case 2:
+                    Console.WriteLine("Second Digit Is At Tens Place");
+                    break;
+                case 1:
+                    Console.WriteLine("Second Digit Is At Ones Place");
+                    break;
+            }
+            
+        }
+    }
+}

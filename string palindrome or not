@@ -1,0 +1,29 @@
+using System;
+
+namespace ConsoleApp4
+{
+    class program
+    {
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the string");
+            string str = Console.ReadLine();
+            int i,j;
+            bool flag = true;
+            for (i = 0, j = str.Length - 1; i < str.Length / 2; i++, j--)
+            {
+                if (str[i] != str[j])
+                {
+                    Console.WriteLine("Not Palindrome");
+                    flag = false;
+                    break;
+                }
+                flag = true; 
+            }
+            if (flag)
+            {
+                Console.WriteLine("Palindrome");
+            }
+        }
+    }
+}

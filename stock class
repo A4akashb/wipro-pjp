@@ -1,0 +1,52 @@
+using System;
+
+namespace ConsoleApp5
+{
+    
+    class Stock
+    {
+        string name, symbol;
+        double pClosing, cClosing;
+
+        public Stock(string name,string symbol,double pClosing,double cClosing)
+        {
+            this.name = name;
+            this.symbol = symbol;
+            this.pClosing = pClosing;
+            this.cClosing = cClosing;
+        }
+
+        public string getChangePercentage()
+        {
+            double change;
+            change = ((cClosing-pClosing) / pClosing) *100;
+            string s = change + " %";
+            return s;
+        }
+
+        public void display()
+        {
+            Console.WriteLine("Stock Name : {0}", name);
+            Console.WriteLine("Stock Symbol : {0}", symbol);
+            Console.WriteLine("Previous Closing Price : {0}", pClosing);
+            Console.WriteLine("Current Closing Price : {0}", cClosing);
+        }
+
+        public static void Main(String[] args)
+        {
+            Console.WriteLine("Enter Name , Symbol , Previous Closing Price, Current Closing Price");
+            string name, symbol;
+            double pClosing = 0.0f;
+            double cClosing=0.0f;
+            name = Console.ReadLine();
+            symbol = Console.ReadLine();
+            pClosing = Convert.ToSingle(Console.ReadLine());
+            cClosing = Convert.ToSingle(Console.ReadLine());
+
+            Stock s1 = new Stock(name,  symbol,  pClosing, cClosing);
+            s1.display();
+            Console.WriteLine("Percentage Change In Closing Price : " + s1.getChangePercentage());
+
+        }
+    }
+}

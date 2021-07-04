@@ -1,0 +1,43 @@
+using System;
+
+namespace ConsoleApp5
+{
+
+    class Employee
+    {
+        string name;
+        double basic, hra, da, tax, gross, net;
+        public Employee(string name, double basic)
+        {
+            this.name = name;
+            this.basic = basic;
+        }
+
+        //tax = 8%     display method     gross(basic+hra+da)         net(gross-tax)
+        public void CalculateNetPay()
+        {
+            this.hra = (15 * basic) / 100;
+            this.da = (10 * basic) / 100;
+            this.tax = (8 * basic) / 100;
+            this.gross = basic + hra + da;
+            this.net = gross - tax;
+        }
+
+        public void display()
+        {
+            CalculateNetPay();
+            Console.WriteLine("Basic Salary : " + basic + "\n HRA : " + hra + "\n DA : " + da + "\n Tax : " + tax + "\n Gross Salary : " + gross + "\n Net Salary  : " + net);
+        }
+
+
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter Employee Name And Basic Salary");
+            Employee new1 = new Employee("Akash",10000);
+            new1.display();
+
+
+        }
+    }
+}

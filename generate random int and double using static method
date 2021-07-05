@@ -1,0 +1,42 @@
+using System;
+
+namespace ConsoleApp6
+{
+    static class generateRandom
+    {
+        public static int randInt(int a, int b)
+        {
+            Random rand = new Random();
+            return rand.Next(a - 1, b - 1);
+        }
+
+        public static double rand(int x, int y )
+        {
+            x -= 1;
+            y -= 1;
+            double a = Convert.ToDouble(x);
+            double b = Convert.ToDouble(y);
+            
+            System.Random random = new System.Random();
+            double val = (random.NextDouble() * (b - a) + a);
+            return (double)val;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter The Values Below : \n\nEnter The First Value : ");
+            int a = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nEnter The Second Value : ");
+            int b = Convert.ToInt32(Console.ReadLine());
+
+            int res=generateRandom.randInt(a, b);
+
+            double res1 = generateRandom.rand(a, b);
+
+            Console.WriteLine("\n\nRandom Integer Value Between " + a + " and " + b + " is : " + res);
+            Console.WriteLine("\nRandom Double Value Between " + a + " and " + b + " is : " + res1);
+        }
+    }
+}

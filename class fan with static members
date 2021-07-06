@@ -1,0 +1,89 @@
+using System;
+
+namespace ConsoleApp7
+{
+    class fan
+    {
+        public static int slow = 1;
+        public static int medium = 2;
+        public static int high = 3;
+        private int speed = slow;
+        private bool on = false;
+        private double radius = 5;
+        private string color = "red";
+
+        fan()
+        {
+            
+        }
+        public int GetSpeed()
+        {
+            return speed;
+        }
+        public void SetSpeed(int speed)
+        {
+            this.speed = speed;
+        }
+        
+        public bool GetOn()
+        {
+            return on;
+        }
+        public void SetOn(bool a)
+        {
+            this.on = a;
+        } 
+        public double GetRadius()
+        {
+            return radius;
+        }
+        public void SetRadius(double radius)
+        {
+            this.radius = radius;
+        }
+        public string GetColor()
+        {
+            return color;
+        }
+        public void SetColor(string color)
+        {
+            this.color = color;
+        }
+        public void toString()
+        {
+            Console.WriteLine("Fan Status Is : \n ");
+            if (on)
+            {
+                Console.WriteLine("It Is On\n");
+            }
+            else
+            {
+                Console.WriteLine("It Is Off\n");
+            }
+            switch (speed)
+            {
+                case 1:
+                    Console.WriteLine("It Is Slow");
+                    break;
+                case 2:
+                    Console.WriteLine("It Is Medium");
+                    break;
+                case 3:
+                    Console.WriteLine("It Is Fast");
+                    break;
+            }
+            Console.WriteLine("\nIt's Color Is : {0}", color);
+            Console.WriteLine("\nIt's Radius Is : {0}", radius);
+        }
+        static void Main(string[] args)
+        {
+            
+
+            fan f1 = new fan();
+            f1.SetColor("Blue");
+            f1.SetOn(true);
+            f1.SetSpeed(2);
+            f1.toString();
+        }
+    }
+}

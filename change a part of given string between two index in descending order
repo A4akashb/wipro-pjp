@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+
+//This is temporary needs a lot of improvements
+namespace ConsoleApp9
+{
+    class MyClass
+    {
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Enter The Number Of Testcases :");
+            int t = Convert.ToInt32(Console.ReadLine());
+            string[,] arr = new string[t, 3];
+            Console.WriteLine("Enter The Testcases ");
+            int i, j;
+            for (i = 0; i < t; i++)
+            {
+                for (j = 0; j < 3; j++)
+                {
+                    arr[i, j] = Console.ReadLine();
+                }
+            }
+
+            for (i = 0; i < t; i++)
+            {
+                string s;
+                int i1, i2;
+                s = arr[i, 0];
+                i1 = Convert.ToInt32(arr[i, 1]);
+                i2 = Convert.ToInt32(arr[i, 2]);
+                int temp;
+                char[] ch = new char[s.Length];
+
+                for (temp = 0; temp < s.Length; temp++)
+                {
+                    ch[temp] = s[temp];
+                }
+                Array.Sort(ch, i1, i2);
+                if (i1 == 0)
+                {
+                    for (temp = 0; temp <= i1; temp++)
+                    {
+                        Console.Write(ch[temp]);
+                    }
+                }
+                else
+                {
+                    for (temp = 0; temp < i1; temp++)
+                    {
+                        Console.Write(ch[temp]);
+                    }
+                }
+                for (temp = i2; temp >= i1; temp--)
+                {
+                    Console.Write(ch[temp]);
+                }
+                for (temp = i2 + 1; temp < ch.Length; temp++)
+                {
+                    Console.Write(ch[temp]);
+                    Console.WriteLine("\n");
+                }
+
+
+
+            }
+
+        }
+
+    }
+}

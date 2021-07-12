@@ -1,0 +1,62 @@
+using System;
+
+namespace ConsoleApp12
+{
+
+    public class Fruit
+    {
+        public string taste;
+        public int size;
+        public Fruit(string taste, int size)
+        {
+            this.size = size;
+            this.taste = taste;
+        }
+
+        public virtual void eat()
+        {
+            Console.WriteLine("The Taste Of The Fruit Is : {0}", taste);
+            Console.WriteLine("The Size Of The Fruit Is : {0}", size);
+        }
+
+
+    }
+
+    public class Apple : Fruit
+    {
+        public Apple(string taste, int size) : base(taste, size)
+        {
+        }
+        public override void eat()
+        {
+            Console.WriteLine("The Taste Of The Fruit Is : {0}", taste);
+            Console.WriteLine("The Size Of The Fruit Is : {0}", size);
+        }
+    }
+
+
+    public class Orange : Fruit
+    {
+        public Orange(string taste, int size) : base(taste, size)
+        {
+        }
+
+        public override void eat()
+        {
+            base.eat();
+        }
+    }
+
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Apple a = new Apple("sweet", 2);
+            a.eat();
+            Console.WriteLine("\n");
+            Orange o = new Orange("less sweet", 3);
+            o.eat();
+        }
+    }
+}

@@ -1,0 +1,53 @@
+using System;
+
+namespace ConsoleApp13
+{
+   public class Super_Duck
+    {
+        public virtual void eat()
+        {
+
+        }
+    }
+
+    public class MyDuck:Super_Duck
+    {
+        public override void eat()
+        {
+            Console.WriteLine("I am eating food...");
+        }
+    }
+
+    public class ToyDuck : Super_Duck
+    {
+        public override void eat()
+        {
+            Console.WriteLine("My food is electrons...");
+        }
+    }
+
+
+       
+        
+    
+    class Duck
+    {
+        static void Main(string[] args)
+        {
+            int x;
+            Console.WriteLine("1. Press 1 For Feeding Duck \n2. Press 2 For Feeding The Toy Duck");
+            x = Convert.ToInt32(Console.ReadLine());
+            MyDuck m = new MyDuck();
+            ToyDuck t = new ToyDuck();
+            switch (x)
+            {
+                case 1:
+                    m.eat();
+                    break;
+                case 2:
+                    t.eat();
+                    break;
+            }
+        }
+    }
+}

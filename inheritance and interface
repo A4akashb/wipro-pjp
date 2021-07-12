@@ -1,0 +1,246 @@
+using System;
+using System.Collections.Generic;
+using System.Numerics;
+
+
+namespace ConsoleApp9
+{
+    public class person {
+        public string fname, lname, email;
+        public DateTime dob;
+        public readonly bool IsAdult = true;
+        public readonly string SunSign;
+        public readonly string ScreenName;
+        public readonly bool IsBirthDay = false;
+        public person(string fname,string lname,string email,DateTime dob)
+        {
+            this.fname = fname;
+            this.lname = lname;
+            this.email = email;
+            this.dob = dob;
+
+
+            
+            DateTime To = DateTime.Now;
+            DateTime s = dob;
+            double diff1 = (To - s).TotalDays;
+            Console.WriteLine(diff1);
+            double n = (diff1 / 365);
+            int month = Convert.ToInt32(dob.Month);
+            int day = Convert.ToInt32(dob.Day);
+            if (n >= 18)
+            {
+                Console.WriteLine("isAdult: {0}", IsAdult);
+            }
+            else
+            {
+                Console.WriteLine("You are not an Adult");
+            }
+            if (dob.Month == To.Month & dob.Day == To.Day)
+            {
+                IsBirthDay = true;
+                
+            }
+            else
+            {
+                IsBirthDay = false;
+            }
+
+            if (month == 12)
+            {
+
+                if (day < 22)
+                    SunSign = "Sagittarius";
+                else
+                    SunSign = "capricorn";
+            }
+
+            else if (month == 1)
+            {
+                if (day < 20)
+                    SunSign = "Capricorn";
+                else
+                    SunSign = "aquarius";
+            }
+
+            else if (month == 2)
+            {
+                if (day < 19)
+                    SunSign = "Aquarius";
+                else
+                    SunSign = "pisces";
+            }
+
+            else if (month == 3)
+            {
+                if (day < 21)
+                    SunSign = "Pisces";
+                else
+                    SunSign = "aries";
+            }
+            else if (month == 4)
+            {
+                if (day < 20)
+                    SunSign = "Aries";
+                else
+                    SunSign = "taurus";
+            }
+
+            else if (month == 5)
+            {
+                if (day < 21)
+                    SunSign = "Taurus";
+                else
+                    SunSign = "gemini";
+            }
+
+            else if (month == 6)
+            {
+                if (day < 21)
+                    SunSign = "Gemini";
+                else
+                    SunSign = "cancer";
+            }
+
+            else if (month == 7)
+            {
+                if (day < 23)
+                    SunSign = "Cancer";
+                else
+                    SunSign = "leo";
+            }
+
+            else if (month == 8)
+            {
+                if (day < 23)
+                    SunSign = "Leo";
+                else
+                    SunSign = "virgo";
+            }
+
+            else if (month == 9)
+            {
+                if (day < 23)
+                    SunSign = "Virgo";
+                else
+                    SunSign = "libra";
+            }
+
+            else if (month == 10)
+            {
+                if (day < 23)
+                    SunSign = "Libra";
+                else
+                    SunSign = "scorpio";
+            }
+
+            else if (month == 11)
+            {
+                if (day < 22)
+                    SunSign = "scorpio";
+                else
+                    SunSign = "sagittarius";
+            }
+
+            
+
+            string s1 = fname.Substring(0, 2);
+            s1 += lname.Substring(0, 2);
+            s1 += Convert.ToString(dob);
+
+        }
+       
+
+        
+      
+       
+    }
+    public class employee : person
+    {
+        public double salary;
+
+        public employee(string fname, string lname, string email, DateTime dob) : base(fname, lname, email, dob) {
+            
+        }
+
+        
+
+       
+        public void display()
+        {
+
+            Console.WriteLine("Name : {0} {1}", fname, lname);
+            Console.WriteLine("Email Address : {0}", email);
+            Console.WriteLine("Date Of Birth Is : {0}", dob);
+            Console.WriteLine("Is Today Your Birthday : {0}", IsBirthDay);
+            Console.WriteLine("Your Sun Sign Is : {0}", SunSign);
+            Console.WriteLine("Am I 18 Years Old : {0}", IsAdult);
+            Console.WriteLine("Salary : {0}", salary);
+        }
+    }
+    public interface Inter
+    {
+        
+    }
+
+    public class hourly : person, Inter
+    {
+        public double hourWorked, payPerHour;
+        public hourly(string fname, string lname, string email, DateTime dob,double payPerHour,double hourWorked ) : base(fname, lname, email, dob) {
+            this.payPerHour = payPerHour;
+            this.hourWorked = hourWorked;
+        }
+        
+       
+    }
+
+    public interface inter2
+    {
+
+    }
+
+    public class PermanantEmployee : person, inter2
+    {
+        PermanantEmployee(string fname, string lname, string email, DateTime dob) : base(fname, lname, email, dob)
+        {
+            Console.WriteLine("You Are In PermanatEmployee Class");
+        }
+
+    }
+
+    interface Ipayable : Inter, inter2 { }
+
+    public class Akash : Ipayable
+    {
+       public void calculatePay(double hourWorked,double payPerHour)
+        {
+            Console.WriteLine("Amout To Be Paid Is : {0}", hourWorked * payPerHour);
+        }
+        
+    }
+
+
+    class MyClass
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter your FirstName:");
+            string fname = Console.ReadLine();
+            Console.WriteLine("Enter your LastName:");
+            String lname = Console.ReadLine();
+            Console.WriteLine("Enter your Email:");
+            String email = Console.ReadLine();
+            Console.WriteLine("Enter your Date of Birth:");
+            String dob = Console.ReadLine();
+            DateTime newDt = DateTime.Parse(dob);
+            employee e = new employee(fname, lname, email, newDt);
+            Console.WriteLine("Enter The Number Of Hours Worked");
+            double hourWorked = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter The WagePer Hour");
+            double payPerHour = Convert.ToDouble(Console.ReadLine());
+            e.display();
+            Akash a = new Akash();
+            a.calculatePay(hourWorked, payPerHour);
+        }
+    }
+}

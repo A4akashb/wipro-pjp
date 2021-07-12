@@ -1,0 +1,66 @@
+using System;
+
+namespace ConsoleApp13
+{
+    public class math
+    {
+        public int add(int a,int b ,int c)
+        {
+            return a + b + c;
+        }
+
+        public int add(int a,int b)
+        {
+            return a + b;
+        }
+
+        public int mul(int a,int b,int c)
+        {
+            return a*b * c;
+        }
+
+        public int mul(int a,int b)
+        {
+            return a * b;
+        }
+
+        public int sub(int a,int b,int c)
+        {
+            return a - b - c;
+        }
+
+        public int sub(int a,int b)
+        {
+            return a - b;
+        }
+
+        public double div(double a,double b,double c)
+        {
+            return a / b / c;
+        }
+
+        public double div(double a,double b)
+        {
+            return a / b;
+;        }
+    } 
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            math m = new math();
+            Console.WriteLine("Addition Overloading Example");
+            Console.WriteLine(m.add(2, 5));
+            Console.WriteLine(m.add(2, 5,6));
+            Console.WriteLine("Subtraction Overloading Example");
+            Console.WriteLine(m.sub(12, 5));
+            Console.WriteLine(m.sub(12, 5,2));
+            Console.WriteLine("Multipication Overloading Example");
+            Console.WriteLine(m.mul(2, 5));
+            Console.WriteLine(m.mul(2, 5,3));
+            Console.WriteLine("Division Overloading Example");
+            Console.WriteLine(m.div(12.0, 5.0));
+            Console.WriteLine(m.div(120.0,12.0, 5.0));
+        }
+    }
+}

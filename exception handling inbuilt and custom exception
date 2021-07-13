@@ -1,0 +1,91 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+
+
+
+namespace ConsoleApp15
+{
+    class MyException: ApplicationException
+    {
+        public void NegativeNumberException()
+        {
+            Console.WriteLine("Entered Number Is Negative");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+
+        {
+           
+                Console.WriteLine("Enter the Name of the student:");
+                string Name = Console.ReadLine();
+            try
+            {
+                Console.WriteLine("Enter the Marks of the student in Sub 1:");
+                int mark1 = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    if (mark1 < 0)
+                    {
+                        throw new MyException();
+                    }
+                }
+                catch (MyException e)
+                {
+                    e.NegativeNumberException();
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("You Have Enter Invalid Marks In Marks 1 Section");
+            }
+            try
+            {
+                Console.WriteLine("Enter the Marks of the student in Sub 2:");
+                int mark2 = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    if (mark2 < 0)
+                    {
+                        throw new MyException();
+                    }
+                }
+                catch (MyException e)
+                {
+                    e.NegativeNumberException();
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("You Have Enter Invalid Marks In Marks 2 Section");
+            }
+            try
+            {
+                Console.WriteLine("Enter the Marks of the student in Sub 3:");
+
+                int mark3 = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    if (mark3 < 0)
+                    {
+                        throw new MyException();
+                    }
+                }
+                catch (MyException e)
+                {
+                    e.NegativeNumberException();
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("You Have Enter Invalid Marks In Marks 3 Section");
+            }
+        }
+    }
+}

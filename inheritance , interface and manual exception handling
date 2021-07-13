@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using System.Numerics;
 
 
-namespace ConsoleApp9
+namespace ConsoleApp15
 {
-    public class person {
+    class MyException : ApplicationException
+    {
+        public void NonAlphabet()
+        {
+            Console.WriteLine("String conatins a non alphabet character");
+        }
+
+        public void Null()
+        {
+            Console.WriteLine("String Is Null");
+        }
+    }
+    public class person
+    {
         public string fname, lname, email;
         public DateTime dob;
         public readonly bool IsAdult = true;
         public readonly string SunSign;
         public readonly string ScreenName;
         public readonly bool IsBirthDay = false;
-        public person(string fname,string lname,string email,DateTime dob)
+        public person(string fname, string lname, string email, DateTime dob)
         {
             this.fname = fname;
             this.lname = lname;
@@ -20,7 +33,7 @@ namespace ConsoleApp9
             this.dob = dob;
 
 
-            
+
             DateTime To = DateTime.Now;
             DateTime s = dob;
             double diff1 = (To - s).TotalDays;
@@ -39,7 +52,7 @@ namespace ConsoleApp9
             if (dob.Month == To.Month & dob.Day == To.Day)
             {
                 IsBirthDay = true;
-                
+
             }
             else
             {
@@ -142,30 +155,31 @@ namespace ConsoleApp9
                     SunSign = "sagittarius";
             }
 
-            
+
 
             string s1 = fname.Substring(0, 2);
             s1 += lname.Substring(0, 2);
             s1 += Convert.ToString(dob);
 
         }
-       
 
-        
-      
-       
+
+
+
+
     }
     public class employee : person
     {
         public double salary;
 
-        public employee(string fname, string lname, string email, DateTime dob) : base(fname, lname, email, dob) {
-            
+        public employee(string fname, string lname, string email, DateTime dob) : base(fname, lname, email, dob)
+        {
+
         }
 
-        
 
-       
+
+
         public void display()
         {
 
@@ -180,18 +194,19 @@ namespace ConsoleApp9
     }
     public interface Inter
     {
-        
+
     }
 
     public class hourly : person, Inter
     {
         public double hourWorked, payPerHour;
-        public hourly(string fname, string lname, string email, DateTime dob,double payPerHour,double hourWorked ) : base(fname, lname, email, dob) {
+        public hourly(string fname, string lname, string email, DateTime dob, double payPerHour, double hourWorked) : base(fname, lname, email, dob)
+        {
             this.payPerHour = payPerHour;
             this.hourWorked = hourWorked;
         }
-        
-       
+
+
     }
 
     public interface inter2
@@ -212,11 +227,11 @@ namespace ConsoleApp9
 
     public class Akash : Ipayable
     {
-       public void calculatePay(double hourWorked,double payPerHour)
+        public void calculatePay(double hourWorked, double payPerHour)
         {
             Console.WriteLine("Amout To Be Paid Is : {0}", hourWorked * payPerHour);
         }
-        
+
     }
 
 
@@ -226,8 +241,72 @@ namespace ConsoleApp9
         {
             Console.WriteLine("Enter your FirstName:");
             string fname = Console.ReadLine();
+           
+
+            try
+            {
+                if (fname == "")
+                {
+                    throw new MyException();
+                }
+            }
+            catch(MyException exc) 
+            {
+                exc.Null();
+            }
+
+          
+
+            try
+            {
+                int i;
+                for (i = 0; i < fname.Length; i++)
+                {
+                    int temp = fname[i];
+                    if ((temp>32 && temp<65)||(temp>90 && temp < 97) || (temp > 122 && temp < 256))
+                    {
+                        throw new MyException();
+                        
+                    }
+                }
+            }
+            catch (MyException exc)
+            {
+                exc.NonAlphabet();  
+            }
+
             Console.WriteLine("Enter your LastName:");
             String lname = Console.ReadLine();
+
+            try
+            {
+                if (lname == "")
+                {
+                    throw new MyException();
+                }
+            }
+            catch (MyException exc)
+            {
+                exc.Null();
+            }
+
+            try
+            {
+                int i;
+                for (i = 0; i < lname.Length; i++)
+                {
+                    int temp = lname[i];
+                    if ((temp > 32 && temp < 65) || (temp > 90 && temp < 97) || (temp > 122 && temp < 256))
+                    {
+                        throw new MyException();
+
+                    }
+                }
+            }
+            catch (MyException exc)
+            {
+                exc.NonAlphabet();
+            }
             Console.WriteLine("Enter your Email:");
             String email = Console.ReadLine();
             Console.WriteLine("Enter your Date of Birth:");
